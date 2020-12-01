@@ -2,7 +2,6 @@ package http
 
 import (
 	"encoding/json"
-	"fmt"
 	"net/http"
 
 	"github.com/gorilla/mux"
@@ -52,9 +51,7 @@ func (handler *FoodsHandler) FetchFood(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusNoContent)
 		return
 	}
-	fmt.Println(foods)
 	js, err := json.Marshal(foods)
-	fmt.Println(js)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
